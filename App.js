@@ -8,6 +8,7 @@ import Chat from './components/Chat';
 
 const Stack = createStackNavigator();
 
+
 export default function App() {
   return (
     <NavigationContainer>
