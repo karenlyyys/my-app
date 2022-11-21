@@ -9,18 +9,29 @@ export default class Chat extends React.Component {
   constructor() {
     super();
     this.state = {
-    messages: [],
-    uid: 0,
-    user: {
-      _id: '',
-      avatar: '',
-      name: '',
-    },
-    loggedInText: 'Please wait, you are getting logged in',
-    image: null,
-    location: null,
-    isConnected: false,
+      messages: [],
+      uid: 0,
+      user: {
+          _id: '',
+          avatar: '',
+          name: '',
+      },
+      isConnected: false,
+      image: null,
+      location: null
   };
+  //   messages: [],
+  //   uid: 0,
+  //   user: {
+  //     _id: '',
+  //     avatar: '',
+  //     name: '',
+  //   },
+  //   loggedInText: 'Please wait, you are getting logged in',
+  //   image: null,
+  //   location: null,
+  //   isConnected: false,
+  // };
   
 
   if (!firebase.apps.length) {
@@ -43,15 +54,6 @@ export default class Chat extends React.Component {
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
 
-    //Load messages with firebase
-
-    NetInfo.fetch().then(connection => {
-        if (connection.isConnected) {
-            this.setState({
-                isConnected: true,
-            });
-            console.log('online');
-
 
             //Anonymous user auth
             this.referenceChatMessages = firebase.firestore().collection('messages');
@@ -62,7 +64,7 @@ export default class Chat extends React.Component {
                     firebase.auth().signInAnonymously();
                 }
                 this.setState({
-                    uid: user.uid,
+                    uid: user._id,
                     messages: [],
                     user: {
                         _id: user.uid,
@@ -75,16 +77,16 @@ export default class Chat extends React.Component {
                 this.saveMessages();
             });
         }
-        //display messages from asyncStorage
-        else {
-            this.setState({
-                isConnected: false,
-            });
-            console.log('offline');
-            this.getMessages();
-        }
-    })
-}
+//         //display messages from asyncStorage
+//         else {
+//             this.setState({
+//                 isConnected: false,
+//             });
+//             console.log('offline');
+//             this.getMessages();
+//         }
+//     })
+// }
 
 componentWillUnmount() {
   if (this.isConnected) {
@@ -174,6 +176,7 @@ onCollectionUpdate = (querySnapshot) => {
           backgroundColor: bgColor,
         }}
       >
+         <Text>{this.state.loggedInText}</Text>
         <GiftedChat
          renderBubble={this.renderBubble.bind(this)}
   messages={this.state.messages}
