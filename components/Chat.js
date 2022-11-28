@@ -1,27 +1,8 @@
-<<<<<<< HEAD
 import React from "react";
 import { View } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import NetInfo from '@react-native-community/netinfo';
-=======
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  ImageBackground,
-  Text,
-  View,
-  Platform,
-  KeyboardAvoidingView,
-  LogBox,
-} from "react-native";
-import {
-  Bubble,
-  GiftedChat,
-  SystemMessage,
-  Day,
-} from "react-native-gifted-chat";
->>>>>>> 617b1dcf0ebcdb5b62ab38c715f8ec5fec72eac6
 
 import firebase from "firebase";
 import "firebase/firestore";
@@ -65,7 +46,6 @@ class Chat extends Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
     this.getMessages();
@@ -79,10 +59,6 @@ class Chat extends Component {
     });
 
     this.referenceChatMessages = firebase.firestore().collection("messages");
-=======
-    const { name } = this.props.route.params;
-    this.props.navigation.setOptions({ title: name ? name : "Anonymous" });
->>>>>>> 617b1dcf0ebcdb5b62ab38c715f8ec5fec72eac6
     this.authUnsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
         firebase.auth().signInAnonymously();
