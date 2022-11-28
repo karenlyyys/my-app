@@ -1,6 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import { GiftedChat, Bubble } from "react-native-gifted-chat";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import NetInfo from '@react-native-community/netinfo';
 
 const firebase = require("firebase");
 require("firebase/firestore");
@@ -50,6 +52,16 @@ export default class Chat extends React.Component {
   componentDidMount() {
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
+    this.getMessages();
+
+    NetInfo.fetch().then(connection => {
+      if (connection.isConnected) {
+        console.log('online');
+      } else {
+        console.log('offline');
+      }
+    });
+
     this.referenceChatMessages = firebase.firestore().collection("messages");
     this.authUnsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (!user) {
@@ -99,6 +111,56 @@ export default class Chat extends React.Component {
         this.addMessages();
       }
     );
+  }
+
+  async getMessages() {
+    let messages = '';
+    try {
+      messages = await AsyncStorage.getItem('messages') || [];
+      this.setState({
+        messages: JSON.parse(messages)
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }), () => {
+      this.saveMessages();
+    });
+  }
+
+  async saveMessages() {
+    try {
+      await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async deleteMessages() {
+    try {
+      await AsyncStorage.removeItem('messages');
+      this.setState({
+        messages: []
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  renderInputToolbar(props) {
+    if (this.state.isConnected == false) {
+    } else {
+      return(
+        <InputToolbar
+        {...props}
+        />
+      );
+    }
   }
 
   renderBubble(props) {
