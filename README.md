@@ -1,4 +1,4 @@
-### Overview
+## Overview
 
 <p>A chat app for mobile devices using React Native. Users will be able to chat with other users, send images, and share location</p>
 
