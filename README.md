@@ -28,7 +28,7 @@ before joining the chat.<br>
 and location data.<br>
 <p>● Data gets stored online and offline.<br>
 
-###Tech
+### Tech
 <p>● React Native</p>
 <p>● Expo</p>
 <p>● Google Firebase Storage</p>
