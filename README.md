@@ -8,7 +8,7 @@ friends and family.<br>
 the latest news.<br>
 <p>● As a user, I want to send images to my friends to show them what I’m currently doing.<br>
 <p>● As a user, I want to share my location with my friends to show them where I am.<br>
-<o>● As a user, I want to be able to read my messages offline so I can reread conversations at any
+<p>● As a user, I want to be able to read my messages offline so I can reread conversations at any
 time.<br>
 <p>● As a user with a visual impairment, I want to use a chat app that is compatible with a screen
 reader so that I can engage with a chat interface.</p>
