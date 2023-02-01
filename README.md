@@ -2,8 +2,8 @@ Overview
 A chat app for mobile devices using React Native. Users will be able to chat with other users, send images, and share location
 
 User Stories
-● As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my
-friends and family.
+<p>● As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my
+friends and family.</p>
 ● As a user, I want to be able to send messages to my friends and family members to exchange
 the latest news.
 ● As a user, I want to send images to my friends to show them what I’m currently doing.
