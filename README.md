@@ -1,8 +1,9 @@
-Overview
+### Overview
 
 <p>A chat app for mobile devices using React Native. Users will be able to chat with other users, send images, and share location</p>
 
-User Stories
+### User Stories
+
 ● As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my
 friends and family.
 
@@ -19,7 +20,7 @@ time.
 ● As a user with a visual impairment, I want to use a chat app that is compatible with a screen
 reader so that I can engage with a chat interface.
 
-Key Features
+### Key Features
 <p>● A page where users can enter their name and choose a background color for the chat screen
 before joining the chat.<br>
 <p>● A page displaying the conversation, as well as an input field and submit button.<br>
